@@ -2,7 +2,7 @@ package board;
 
 import java.util.Date;
 
-public class boardVO {
+public class BoardVO {
 
 	//변수생성
 	private int num;
@@ -13,12 +13,12 @@ public class boardVO {
 	private int cnt;
 	
 	//기본생성자
-	public boardVO() {
+	public BoardVO() {
 		super();
 	}
 	
 	//필드생성자
-	public boardVO(int num, String title, String writer, String content, Date regdate, int cnt) {
+	public BoardVO(int num, String title, String writer, String content, Date regdate, int cnt) {
 		super();
 		this.num = num;
 		this.title = title;
