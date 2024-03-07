@@ -25,7 +25,8 @@
 		<c:forEach var="board" items="${ls}">
 		<tr>
 			<td>${board.num}</td>
-			<td>${board.title}</td>
+			<!-- 상세보기 -->
+			<td><a href="${pageContext.request.contextPath}/board/boardDetail.jsp?num=${board.num}">${board.title}</a></td>
 			<td>${board.writer}</td>
 			<td>${board.regdate}</td>
 			<td>${board.cnt}</td>
