@@ -32,6 +32,7 @@
 			<td>${board.cnt}</td>
 		</tr>
 		</c:forEach>	
-	</table>	
+	</table>
+	<a href="<c:url value="/board/registForm.jsp"/>"><button>글등록</button></a>	
 </body>
 </html>
