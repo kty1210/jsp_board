@@ -132,6 +132,7 @@ public class BoardDAO {
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				updateCnt(num); //조회수 증가
 				vo = new BoardVO(
 					rs.getInt(1),
 					rs.getString(2),
@@ -209,7 +210,42 @@ public class BoardDAO {
 	
 	//삭제(D)
 	
-	
+	// 카운트 증가
+	public int updateCnt(int num) {
+		
+		//DB연결 인터페이스
+		Connection con = null;
+		
+		//동적 SQL문 실행시켜주는 인터페이스
+		PreparedStatement pstmt = null;
+		String query = "update board set cnt=cnt+1 where num=?";
+		int ret = -1;
+		try {
+			con = ju.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, num);
+			ret = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return ret;
+		
+	}
 	
 
 }
