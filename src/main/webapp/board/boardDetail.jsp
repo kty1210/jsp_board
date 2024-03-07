@@ -24,5 +24,7 @@
 	<p>내용:${vo.content}</p>
 	<p>등록일자:${vo.regdate}</p>
 	<p>조회수:${vo.cnt}</p>
+	<a href="<c:url value="/board/editForm.jsp?num=${vo.num}"/>"><button>수정</button></a>
+	<a href="#"><button>삭제</button></a>
 </body>
 </html>
