@@ -209,7 +209,45 @@ public class BoardDAO {
 	}
 	
 	//삭제(D)
-	
+	public int delete(int num) {
+		
+		////DB연결 인터페이스
+		Connection con = null;
+		
+		//동적 SQL문 실행시켜주는 인터페이스
+		PreparedStatement pstmt = null;
+		String query = "delete from board where num=?";
+		int ret = -1;
+		try {
+			con = ju.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, num);
+			ret = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			//리소스 관리
+			if(pstmt != null) {
+				try {
+					pstmt.close();	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return ret;
+	}
+
+
+
+
 	// 카운트 증가
 	public int updateCnt(int num) {
 		
