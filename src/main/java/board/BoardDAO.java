@@ -67,7 +67,7 @@ public class BoardDAO {
 		
 		//결과 저장 인터페이스
 		ResultSet rs = null;
-		String query = "select num, title, writer, content, regdate, cnt from board";
+		String query = "select num, title, writer, content, regdate, cnt from board order by num desc";
 		List<BoardVO> ls = new ArrayList<>();
 		try {
 			con = ju.getConnection();
